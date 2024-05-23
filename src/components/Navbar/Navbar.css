@@ -1,0 +1,62 @@
+/* Reset some basic elements */
+body,
+h1,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/*  */
+.navbar {
+  background-color: rgb(29, 35, 41);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-header {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  display: flex;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-nav li {
+  display: flex;
+  align-items: center;
+  margin: 0 10px; /* Add spacing between list items */
+}
+
+.navbar-nav a {
+  color: #f2f2f2;
+  text-decoration: none; /* Remove underline from links */
+  font-size: 1em;
+  transition: color 0.3s ease;
+  font-weight: bold; /* Make link text bolder */
+}
+
+.navbar-nav a:hover {
+  color: #11998e;
+}

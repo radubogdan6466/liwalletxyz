@@ -1,0 +1,49 @@
+.about {
+  background-color: rgb(
+    29,
+    35,
+    41
+  ); /* Dark background for the entire Home section */
+  padding: 20px;
+  text-align: center;
+  color: #f2f2f2;
+}
+
+.about h1 {
+  font-size: 1.8em; /* Larger heading for About */
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.1em; /* Slightly larger paragraph text */
+  line-height: 1.5; /* Improve readability */
+  margin-bottom: 20px;
+}
+
+.about .features {
+  display: flex; /* Allow features to be displayed side-by-side */
+  flex-wrap: wrap; /* Wrap features on smaller screens */
+  margin-bottom: 20px;
+}
+
+.about .feature {
+  flex: 1 0 33.33%; /* Equally distribute features within the flexbox */
+  margin: 10px;
+  text-align: center;
+}
+
+.about .feature h3 {
+  font-size: 1.2em; /* Slightly smaller heading for features */
+  margin-bottom: 5px;
+}
+
+.about .feature p {
+  line-height: 1.3; /* Adjust line-height for shorter content */
+}
+
+/* Optional: Styling for feature icons (replace with your icon classes) */
+.about .feature i {
+  font-size: 2em; /* Increase icon size for better visibility */
+  margin-bottom: 10px;
+  color: #333; /* Darker color for icons */
+}

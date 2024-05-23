@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.03d402e0.css",
+    "main.js": "/static/js/main.865891cb.js",
+    "static/js/453.9c4e4590.chunk.js": "/static/js/453.9c4e4590.chunk.js",
+    "static/media/liwallet.apk": "/static/media/liwallet.4a7b079214f69366ab7b.apk",
+    "static/media/favicon.ico": "/static/media/favicon.9311cab424e3b5a4bcba.ico",
+    "index.html": "/index.html",
+    "main.03d402e0.css.map": "/static/css/main.03d402e0.css.map",
+    "main.865891cb.js.map": "/static/js/main.865891cb.js.map",
+    "453.9c4e4590.chunk.js.map": "/static/js/453.9c4e4590.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.03d402e0.css",
+    "static/js/main.865891cb.js"
+  ]
+}

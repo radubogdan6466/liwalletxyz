@@ -1,0 +1,28 @@
+.privacy-policy {
+  background-color: rgb(
+    29,
+    35,
+    41
+  ); /* Dark background for the entire Home section */
+  padding: 20px;
+  margin: 0 auto; /* Center the content horizontally */
+  max-width: 700px; /* Limit content width for better layout on larger screens */
+  color: #f2f2f2; /* Darker text color for better contrast */
+}
+
+.privacy-policy h1 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  font-family: Georgia, serif; /* Use a serif font for headings */
+}
+
+.privacy-policy p,
+.privacy-policy ul {
+  margin-bottom: 15px;
+  line-height: 1.6; /* Slightly increased line spacing for readability */
+}
+
+.privacy-policy ul {
+  list-style: disc;
+  padding-left: 20px;
+}
