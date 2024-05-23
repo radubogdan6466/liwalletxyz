@@ -20,6 +20,7 @@ const Home = () => {
         {/* Download links */}
         <a href={apk} className="download-link" download="app-release.apk">
           Download for Android
+          <span>apk file available, soon on Play Store</span>
         </a>
         <a
           href="https://chrome.google.com/webstore/detail/liwallet/your_extension_id"
@@ -27,7 +28,7 @@ const Home = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Add to Chrome
+          Add to Chrome<span>Soon on Chrome web store</span>
         </a>
       </div>
     </div>
