@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
 import logo from "../../favicon.ico";
-import apk from "../../apk/liwallet.apk";
+
 const Home = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownloadClick = () => {
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 7000); // Simulează un timp de așteptare înainte de a reseta mesajul
+  };
+
   return (
     <div className="home">
       {/* Create a container for logo and heading */}
@@ -18,18 +27,27 @@ const Home = () => {
 
       <div className="download-links">
         {/* Download links */}
-        <a href={apk} className="download-link" download="app-release.apk">
-          Download for Android
-          <span>apk file available, soon on Play Store</span>
-        </a>
-        <a
-          href="https://chrome.google.com/webstore/detail/liwallet/your_extension_id"
-          className="download-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Add to Chrome<span>Soon on Chrome web store</span>
-        </a>
+        <div>
+          <a
+            href="https://drive.google.com/uc?export=download&id=1HfVk14RVms0xqunOUmBMvC8QJ0MocSBo"
+            className="download-link"
+            onClick={handleDownloadClick}
+          >
+            {isDownloading ? "On the way..." : "Download for Android"}
+          </a>
+          <span> apk file available, soon on Play Store</span>
+        </div>
+        <div>
+          <a
+            href="https://chrome.google.com/webstore/detail/liwallet/kmlbkiknogfenebpeaohpljdpbicijim"
+            className="download-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Add to Chrome
+          </a>
+          <span>Soon on Chrome web store</span>
+        </div>
       </div>
     </div>
   );
