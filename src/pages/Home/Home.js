@@ -9,7 +9,7 @@ const Home = () => {
     setIsDownloading(true);
     setTimeout(() => {
       setIsDownloading(false);
-    }, 7000); // Simulează un timp de așteptare înainte de a reseta mesajul
+    }, 7000); // Simulates a download wait time
   };
 
   return (
@@ -36,7 +36,6 @@ const Home = () => {
             {isDownloading ? "On the way..." : "Download for Android"}
           </a>
           <span className="announce">
-            {" "}
             apk file available, soon on Play Store
           </span>
         </div>
