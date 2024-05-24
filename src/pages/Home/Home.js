@@ -46,7 +46,7 @@ const Home = () => {
           >
             Add to Chrome
           </a>
-          <span>Soon on Chrome web store</span>
+          <span>(Soon on Chrome web store)</span>
         </div>
       </div>
     </div>
