@@ -29,7 +29,7 @@ const Home = () => {
         {/* Download links */}
         <div>
           <a
-            href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view"
+            href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view?usp=drive_link"
             className="download-link"
             target="_blank"
             onClick={handleDownloadClick}
