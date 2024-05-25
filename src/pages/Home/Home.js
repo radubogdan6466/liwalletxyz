@@ -41,7 +41,7 @@ const Home = () => {
         </div>
         <div>
           <a
-            href="https://chrome.google.com/webstore/detail/liwallet/kmlbkiknogfenebpeaohpljdpbicijim"
+            href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view"
             className="download-link"
             target="_blank"
             rel="noopener noreferrer"
