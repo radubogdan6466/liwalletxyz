@@ -31,6 +31,7 @@ const Home = () => {
           <a
             href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view"
             className="download-link"
+            target="_blank"
             onClick={handleDownloadClick}
           >
             {isDownloading ? "On the way..." : "Download for Android"}
