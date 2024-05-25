@@ -29,7 +29,7 @@ const Home = () => {
         {/* Download links */}
         <div>
           <a
-            href="https://drive.google.com/uc?export=download&id=1HfVk14RVms0xqunOUmBMvC8QJ0MocSBo"
+            href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view"
             className="download-link"
             onClick={handleDownloadClick}
           >
@@ -41,7 +41,7 @@ const Home = () => {
         </div>
         <div>
           <a
-            href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view"
+            href="https://chrome.google.com/webstore/detail/liwallet/kmlbkiknogfenebpeaohpljdpbicijim"
             className="download-link"
             target="_blank"
             rel="noopener noreferrer"
