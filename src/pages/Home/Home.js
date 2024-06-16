@@ -32,6 +32,7 @@ const Home = () => {
             href="https://drive.google.com/file/d/1TA-JkVAFTYOsEr9ho_D7xSpYYEcNsIaM/view?usp=drive_link"
             className="download-link"
             target="_blank"
+            rel="noopener noreferrer"
             onClick={handleDownloadClick}
           >
             {isDownloading ? "On the way..." : "Download for Android"}
@@ -51,11 +52,6 @@ const Home = () => {
           </a>
           <span className="announce"> (Available on Chrome web store)</span>
         </div>
-      </div>
-      <div>
-        <a href="http://localhost:3000/transaction?to=0x123...&amount=10">
-          Send Ether
-        </a>
       </div>
     </div>
   );
