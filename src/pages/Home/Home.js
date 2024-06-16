@@ -52,6 +52,11 @@ const Home = () => {
           <span className="announce"> (Available on Chrome web store)</span>
         </div>
       </div>
+      <div>
+        <a href="http://localhost:3000/transaction?to=0x123...&amount=10">
+          Send Ether
+        </a>
+      </div>
     </div>
   );
 };
