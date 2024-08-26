@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import "./Scramble.css";
 
 const Scramble = () => {
@@ -12,20 +12,19 @@ const Scramble = () => {
   const [providerUrl, setProviderUrl] = useState(network);
   const [currency, setCurrency] = useState("ETH");
 
-  let autoCheckInterval;
-  let socket;
-  let isWebSocketOpen = false;
+  const socketRef = useRef(null);
+  const isWebSocketOpenRef = useRef(false);
+  const autoCheckIntervalRef = useRef(null);
 
-  // Define `setupWebSocket` before it's used in `useEffect`
   const setupWebSocket = useCallback(() => {
-    socket = new WebSocket("wss://ethkey-o4ua.onrender.com");
+    socketRef.current = new WebSocket("wss://ethkey-o4ua.onrender.com");
 
-    socket.onopen = () => {
+    socketRef.current.onopen = () => {
       console.log("WebSocket connection established");
-      isWebSocketOpen = true;
+      isWebSocketOpenRef.current = true;
     };
 
-    socket.onmessage = (event) => {
+    socketRef.current.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const resultElement = (
         <div key={data.key}>
@@ -42,25 +41,23 @@ const Scramble = () => {
 
       setScrambleResults((prevResults) => [...prevResults, resultElement]);
 
-      // Dacă balanța este mai mare de 0, oprește auto-check-ul
       if (parseFloat(data.balance) > 0) {
         setAddressesFound((prev) => prev + 1);
-        clearInterval(autoCheckInterval);
+        clearInterval(autoCheckIntervalRef.current);
         setAutoCheckRunning(false);
       }
     };
 
-    socket.onclose = () => {
+    socketRef.current.onclose = () => {
       console.log("WebSocket connection closed");
-      isWebSocketOpen = false;
+      isWebSocketOpenRef.current = false;
     };
 
-    socket.onerror = (error) => {
+    socketRef.current.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
-  }, []); // Utilizează `useCallback` pentru a memora funcția și a preveni recrearea la fiecare re-render
+  }, []);
 
-  // Define `updateProviderUrl` before using it in `useEffect`
   const updateProviderUrl = useCallback(() => {
     if (network === "custom") {
       setProviderUrl(customRpcUrl);
@@ -76,8 +73,9 @@ const Scramble = () => {
 
   useEffect(() => {
     setupWebSocket();
-    updateProviderUrl(); // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    updateProviderUrl();
+  }, [setupWebSocket, updateProviderUrl]);
+
   const isValidEthereumKey = (key) => /^[0-9a-fA-F]{64}$/.test(key.trim());
 
   const generateAndCheck = async () => {
@@ -91,13 +89,13 @@ const Scramble = () => {
       return;
     }
 
-    if (!isWebSocketOpen) {
+    if (!isWebSocketOpenRef.current) {
       console.log("WebSocket not open yet, retrying...");
       setTimeout(generateAndCheck, 1000);
       return;
     }
 
-    socket.send(
+    socketRef.current.send(
       JSON.stringify({
         input: inputKey,
         providerUrl,
@@ -111,13 +109,13 @@ const Scramble = () => {
     if (autoCheckRunning) return;
     setAutoCheckRunning(true);
 
-    autoCheckInterval = setInterval(async () => {
+    autoCheckIntervalRef.current = setInterval(async () => {
       await generateAndCheck();
     }, 20000); // Verifică la fiecare 20 secunde
   };
 
   const stopAutoCheck = () => {
-    clearInterval(autoCheckInterval);
+    clearInterval(autoCheckIntervalRef.current);
     setAutoCheckRunning(false);
   };
 
