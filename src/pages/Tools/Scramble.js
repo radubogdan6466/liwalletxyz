@@ -211,7 +211,7 @@ const Scramble = () => {
         </div>
       )}
 
-      <p>Addresses found with balance > 0: {addressesFound}</p>
+      <p>Addresses with balance greater than 0: {addressesFound}</p>
 
       <div className="buttons">
         <button className="GenerateBtn" onClick={generateAndCheck}>
