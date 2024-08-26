@@ -1,0 +1,55 @@
+.toolcomp {
+  background-color: rgb(
+    29,
+    35,
+    41
+  ); /* Dark background for the entire Home section */
+  padding: 20px;
+  text-align: center;
+  color: #f2f2f2;
+}
+
+.toolcomp h1 {
+  font-size: 2em; /* Increase heading size */
+  margin-bottom: 20px;
+}
+
+.toolcomp p {
+  font-size: 1.1em; /* Slightly larger paragraph text */
+  line-height: 1.5; /* Improve readability */
+  margin-bottom: 20px;
+}
+
+.toolcomp a {
+  color: #f2f2f2;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* Rounded corners for buttons */
+  cursor: pointer; /* Indicate clickable button */
+  text-decoration: none; /* Remove underline from button text */
+  display: inline-block; /* Allow buttons to be placed side-by-side */
+  margin-top: 10px; /* Add spacing above buttons */
+}
+
+/* Optional: Styling for a hero image (replace with your image path) */
+.toolcomp img {
+  height: auto;
+}
+.logo-small {
+  width: 150px;
+}
+.announce {
+  font-size: 15px;
+  color: #a9a9a9;
+}
+.download-link {
+  font-size: 20px;
+  margin-right: 50px;
+  display: inline-block;
+  position: relative;
+}
+.download-link:hover {
+  font-size: 25px;
+  transition: 0.5s;
+  padding-right: 50px;
+}

@@ -37,9 +37,7 @@ const Home = () => {
           >
             {isDownloading ? "On the way..." : "Download for Android"}
           </a>
-          <span className="announce">
-            apk file available, soon on Play Store
-          </span>
+          <span className="announce">apk file available</span>
         </div>
         <div>
           <a
