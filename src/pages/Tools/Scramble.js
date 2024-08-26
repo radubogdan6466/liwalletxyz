@@ -76,9 +76,8 @@ const Scramble = () => {
 
   useEffect(() => {
     setupWebSocket();
-    updateProviderUrl(); // Setează provider-ul și moneda inițială
-  }, [setupWebSocket, updateProviderUrl]); // Adaugă funcțiile ca dependențe în `useEffect`
-
+    updateProviderUrl(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const isValidEthereumKey = (key) => /^[0-9a-fA-F]{64}$/.test(key.trim());
 
   const generateAndCheck = async () => {
