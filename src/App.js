@@ -5,9 +5,11 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import Navbar from "./components/Navbar/Navbar"; // Import the Navbar component
-import Tools from "./pages/Tools/Tools";
+import MainTools from "./pages/Tools/MainTools";
 import NoMatch from "./pages/NoMatch/NoMatch";
+import BalanceChecker from "./pages/Tools/BalanceChecker";
 import "./App.css";
+import Scramble from "./pages/Tools/Scramble";
 
 function App() {
   return (
@@ -15,8 +17,11 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />{" "}
-          <Route path="/tools" element={<Tools />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/tools" element={<MainTools />} />
+          <Route path="/tools/BalanceChecker" element={<BalanceChecker />} />
+          <Route path="/tools/scramble" element={<Scramble />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NoMatch />} />

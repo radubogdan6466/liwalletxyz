@@ -1,0 +1,13 @@
+.MainToolsElements {
+  color: #f2f2f2;
+  padding: 5px 5px 5px 10px;
+}
+
+.MainToolsElements a {
+  color: inherit; /* Păstrează culoarea textului */
+  text-decoration: none; /* Elimină sublinierea */
+}
+
+.MainToolsElements a:hover {
+  text-decoration: none; /* Asigură că nu apare subliniere nici la hover */
+}

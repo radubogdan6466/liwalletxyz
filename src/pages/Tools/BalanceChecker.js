@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Tools.css";
-const Tools = () => {
+import "./BalanceChecker.css";
+const BalanceChecker = () => {
   const [wallet, setWallet] = useState("");
   const [blockchain, setBlockchain] = useState("ethereum");
   const [balance, setBalance] = useState(null);
@@ -98,4 +98,4 @@ const Tools = () => {
   );
 };
 
-export default Tools;
+export default BalanceChecker;
