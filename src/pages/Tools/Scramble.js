@@ -59,7 +59,7 @@ const Scramble = () => {
     socketRef.current.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
-  }, []);
+  }, [copyToClipboard]); // Include copyToClipboard in dependencies
 
   const updateProviderUrl = useCallback(() => {
     if (network === "custom") {
@@ -211,7 +211,7 @@ const Scramble = () => {
         </div>
       )}
 
-      <p>Addresses with balance greater than 0: {addressesFound}</p>
+      <p>Addresses found with balance > 0: {addressesFound}</p>
 
       <div className="buttons">
         <button className="GenerateBtn" onClick={generateAndCheck}>
