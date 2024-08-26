@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import "./Scramble.css";
-import { FaCopy } from "react-icons/fa"; // Make sure to install react-icons
+import { FaCopy } from "react-icons/fa"; // Ensure react-icons is installed
 
 const Scramble = () => {
   const [inputKey, setInputKey] = useState("");
@@ -80,6 +80,7 @@ const Scramble = () => {
   }, [setupWebSocket, updateProviderUrl]);
 
   const isValidEthereumKey = (key) => /^[0-9a-fA-F]{64}$/.test(key.trim());
+
   const showErrorFor = (message) => {
     setErrorMessage(message);
     setShowError(true);
@@ -87,6 +88,7 @@ const Scramble = () => {
       setShowError(false);
     }, 2000);
   };
+
   const generateAndCheck = async () => {
     if (!isValidEthereumKey(inputKey)) {
       showErrorFor(
@@ -120,12 +122,13 @@ const Scramble = () => {
     setScrambleResults([]);
     setAddressesFound(0);
   };
-  const copyToClipboard = (text) => {
+
+  const copyToClipboard = useCallback((text) => {
     navigator.clipboard
       .writeText(text)
       .then(() => showErrorFor("Copied to clipboard!"))
       .catch((err) => console.error("Failed to copy: ", err));
-  };
+  }, []); // No dependencies here, as it does not depend on external variables
 
   const getDisplayKey = (key) => {
     if (key.length <= 10) return key; // Handle very short keys
@@ -138,6 +141,7 @@ const Scramble = () => {
     "1111111111111111111111111111111111111111111111111111111111111111",
     "dee12d08f1e4b432bac7435a0e4509b2d66620fa96c289049474c9732f672dab",
   ];
+
   return (
     <div className="MainContent">
       <h1>Ethereum Key Scramble & Balance Checker</h1>
