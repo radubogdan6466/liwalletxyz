@@ -19,9 +19,9 @@ const Scramble = () => {
   useEffect(() => {
     setupWebSocket();
     updateProviderUrl(); // Setează provider-ul și moneda inițială
-  }, []);
+  }, [setupWebSocket, updateProviderUrl]); // Include setupWebSocket și updateProviderUrl în matricea de dependențe
 
-  const setupWebSocket = () => {
+  const setupWebSocket = React.useCallback(() => {
     socket = new WebSocket("wss://ethkey-o4ua.onrender.com");
 
     socket.onopen = () => {
@@ -62,7 +62,7 @@ const Scramble = () => {
     socket.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
-  };
+  }, []); // Utilizează React.useCallback pentru a evita recrearea funcției la fiecare re-render
 
   const isValidEthereumKey = (key) => /^[0-9a-fA-F]{64}$/.test(key.trim());
 
