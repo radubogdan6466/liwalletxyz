@@ -1,16 +1,18 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import "./Scramble.css";
+import { FaCopy } from "react-icons/fa"; // Make sure to install react-icons
 
 const Scramble = () => {
   const [inputKey, setInputKey] = useState("");
-  const [numberOfScrambles, setNumberOfScrambles] = useState(20);
+  const [numberOfScrambles, setNumberOfScrambles] = useState();
   const [network, setNetwork] = useState("https://ethereum-rpc.publicnode.com");
   const [customRpcUrl, setCustomRpcUrl] = useState("");
   const [scrambleResults, setScrambleResults] = useState([]);
   const [addressesFound, setAddressesFound] = useState(0);
   const [providerUrl, setProviderUrl] = useState(network);
   const [currency, setCurrency] = useState("ETH");
-
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showError, setShowError] = useState(false);
   const socketRef = useRef(null);
   const isWebSocketOpenRef = useRef(false);
 
@@ -25,15 +27,20 @@ const Scramble = () => {
     socketRef.current.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const resultElement = (
-        <div key={data.key}>
+        <div key={data.key} className="scrambleResultItem">
           <p
             style={{
               color: parseFloat(data.balance) > 0 ? "green" : "white",
-              fontSize: "10px",
+              fontSize: "8px",
             }}
           >
             {data.key} - {data.balance} {data.currency}
           </p>
+          <FaCopy
+            className="copyIcon"
+            onClick={() => copyToClipboard(data.key)}
+            title="Copy to clipboard"
+          />
         </div>
       );
 
@@ -73,15 +80,23 @@ const Scramble = () => {
   }, [setupWebSocket, updateProviderUrl]);
 
   const isValidEthereumKey = (key) => /^[0-9a-fA-F]{64}$/.test(key.trim());
-
+  const showErrorFor = (message) => {
+    setErrorMessage(message);
+    setShowError(true);
+    setTimeout(() => {
+      setShowError(false);
+    }, 2000);
+  };
   const generateAndCheck = async () => {
     if (!isValidEthereumKey(inputKey)) {
-      alert("Invalid private key.");
+      showErrorFor(
+        "Invalid private key. Check again the private key and be sure to not include the `0x` "
+      );
       return;
     }
 
     if (numberOfScrambles <= 0) {
-      alert("Invalid number of scrambles.");
+      showErrorFor("Invalid number of scrambles.");
       return;
     }
 
@@ -105,22 +120,51 @@ const Scramble = () => {
     setScrambleResults([]);
     setAddressesFound(0);
   };
+  const copyToClipboard = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => showErrorFor("Copied to clipboard!"))
+      .catch((err) => console.error("Failed to copy: ", err));
+  };
 
+  const getDisplayKey = (key) => {
+    if (key.length <= 10) return key; // Handle very short keys
+    return `${key.slice(0, 5)}...${key.slice(-5)}`;
+  };
+
+  const exampleKeys = [
+    "0000000000000000000000000000000000000000000000000000000000000100",
+    "dee12d08f1e4b432bac7435a0e4509b2d66620fa96c289049474c9732f672d8b",
+    "1111111111111111111111111111111111111111111111111111111111111111",
+    "dee12d08f1e4b432bac7435a0e4509b2d66620fa96c289049474c9732f672dab",
+  ];
   return (
     <div className="MainContent">
       <h1>Ethereum Key Scramble & Balance Checker</h1>
-
+      <div className="pkeyexamples">
+        <span className="pkeyexample-label">pkey examples:</span>
+        {exampleKeys.map((key, index) => (
+          <div key={index} className="pkeyexample-container">
+            <span className="pkeyexample">{getDisplayKey(key)}</span>
+            <FaCopy
+              className="copyIcon"
+              onClick={() => copyToClipboard(key)}
+              title="Copy to clipboard"
+            />
+          </div>
+        ))}
+      </div>
       <input
         className="InputKey"
         type="text"
-        placeholder="Insert private key"
+        placeholder="Insert private key without 0x"
         value={inputKey}
         onChange={(e) => setInputKey(e.target.value)}
       />
       <input
         className="InputKey"
         type="number"
-        placeholder="Number of Scrambles"
+        placeholder="Number of Scrambles. As many as you want"
         value={numberOfScrambles}
         onChange={(e) => setNumberOfScrambles(parseInt(e.target.value))}
       />
@@ -170,7 +214,7 @@ const Scramble = () => {
           Generate & Check
         </button>
       </div>
-
+      {showError && <span className="ErrorMessage">{errorMessage}</span>}
       <div className="scrambleResults">
         <span className="spanresult">{scrambleResults}</span>
       </div>

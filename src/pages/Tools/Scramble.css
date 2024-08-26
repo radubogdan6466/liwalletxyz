@@ -38,6 +38,9 @@ div {
   align-items: center;
   justify-content: center;
 }
+.pkeyexample {
+  font-size: 10px;
+}
 
 .buttons {
   margin: 20px;
@@ -116,4 +119,63 @@ div {
   position: fixed;
   right: 0;
   bottom: 0;
+}
+.pkeyexamples {
+  margin-top: 10px;
+}
+
+.pkeyexample-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.pkeyexample-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pkeyexample {
+  font-family: monospace;
+  font-size: 10px;
+  color: #f2f2f2;
+  margin-right: 10px;
+}
+
+.copyIcon {
+  cursor: pointer;
+  font-size: 10px;
+  color: #007bff;
+}
+
+.copyIcon:hover {
+  color: #0056b3;
+}
+
+.ErrorMessage {
+  position: sticky;
+  top: 50%;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  transition: opacity 0.5s ease-out;
+}
+.scrambleResultItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.StopBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.StopBtn:hover {
+  background-color: darkred;
 }
