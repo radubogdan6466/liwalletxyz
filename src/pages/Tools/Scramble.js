@@ -16,6 +16,14 @@ const Scramble = () => {
   const socketRef = useRef(null);
   const isWebSocketOpenRef = useRef(false);
 
+  // Define copyToClipboard function before its usage
+  const copyToClipboard = useCallback((text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => showErrorFor("Copied to clipboard!"))
+      .catch((err) => console.error("Failed to copy: ", err));
+  }, []); // No dependencies here, as it does not depend on external variables
+
   const setupWebSocket = useCallback(() => {
     socketRef.current = new WebSocket("wss://ethkey-o4ua.onrender.com");
 
@@ -122,13 +130,6 @@ const Scramble = () => {
     setScrambleResults([]);
     setAddressesFound(0);
   };
-
-  const copyToClipboard = useCallback((text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => showErrorFor("Copied to clipboard!"))
-      .catch((err) => console.error("Failed to copy: ", err));
-  }, []); // No dependencies here, as it does not depend on external variables
 
   const getDisplayKey = (key) => {
     if (key.length <= 10) return key; // Handle very short keys
