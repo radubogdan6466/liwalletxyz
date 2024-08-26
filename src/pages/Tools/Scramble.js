@@ -8,13 +8,11 @@ const Scramble = () => {
   const [customRpcUrl, setCustomRpcUrl] = useState("");
   const [scrambleResults, setScrambleResults] = useState([]);
   const [addressesFound, setAddressesFound] = useState(0);
-  const [autoCheckRunning, setAutoCheckRunning] = useState(false);
   const [providerUrl, setProviderUrl] = useState(network);
   const [currency, setCurrency] = useState("ETH");
 
   const socketRef = useRef(null);
   const isWebSocketOpenRef = useRef(false);
-  const autoCheckIntervalRef = useRef(null);
 
   const setupWebSocket = useCallback(() => {
     socketRef.current = new WebSocket("wss://ethkey-o4ua.onrender.com");
@@ -31,7 +29,7 @@ const Scramble = () => {
           <p
             style={{
               color: parseFloat(data.balance) > 0 ? "green" : "white",
-              fontSize: "18px",
+              fontSize: "10px",
             }}
           >
             {data.key} - {data.balance} {data.currency}
@@ -43,8 +41,6 @@ const Scramble = () => {
 
       if (parseFloat(data.balance) > 0) {
         setAddressesFound((prev) => prev + 1);
-        clearInterval(autoCheckIntervalRef.current);
-        setAutoCheckRunning(false);
       }
     };
 
@@ -103,20 +99,6 @@ const Scramble = () => {
         numberOfScrambles,
       })
     );
-  };
-
-  const startAutoCheck = () => {
-    if (autoCheckRunning) return;
-    setAutoCheckRunning(true);
-
-    autoCheckIntervalRef.current = setInterval(async () => {
-      await generateAndCheck();
-    }, 20000); // Verifică la fiecare 20 secunde
-  };
-
-  const stopAutoCheck = () => {
-    clearInterval(autoCheckIntervalRef.current);
-    setAutoCheckRunning(false);
   };
 
   const clearResults = () => {
@@ -187,23 +169,11 @@ const Scramble = () => {
         <button className="GenerateBtn" onClick={generateAndCheck}>
           Generate & Check
         </button>
-        <button
-          className="AutoBtn"
-          onClick={startAutoCheck}
-          disabled={autoCheckRunning}
-        >
-          Start Autocheck
-        </button>
-        <button
-          className="StopBtn"
-          onClick={stopAutoCheck}
-          disabled={!autoCheckRunning}
-        >
-          Stop Autocheck
-        </button>
       </div>
 
-      <div className="scrambleResults">{scrambleResults}</div>
+      <div className="scrambleResults">
+        <span className="spanresult">{scrambleResults}</span>
+      </div>
 
       <button className="ClearBtn" onClick={clearResults}>
         Clear Results
