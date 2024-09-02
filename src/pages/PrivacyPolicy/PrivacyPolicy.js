@@ -48,7 +48,7 @@ const PrivacyPolicy = () => {
 
       <p>
         If you have any questions or concerns about this Privacy Policy, please
-        contact us at radubogdan6466@gmail.com.
+        contact us at x.com/liwalletxyz
       </p>
     </div>
   );
