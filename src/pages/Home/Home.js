@@ -17,7 +17,7 @@ const Home = () => {
       {/* Create a container for logo and heading */}
       <div className="home-header">
         <img src={logo} alt="Liwallet" className="logo-small" />
-        <h1>Welcome to Liwallet</h1>
+        <h1>Welcome to Liwallet :)</h1>
       </div>
 
       <p>
