@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css";
 import logo from "../../favicon.ico";
-import Exam from "../exam/Exam";
-import PdfPage from "../exam/pdfs/PdfFiles";
 const Home = () => {
   const [isDownloading, setIsDownloading] = useState(false);
 
