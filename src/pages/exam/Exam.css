@@ -1,0 +1,69 @@
+/* Stilizare pentru formular */
+.exam-form {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0ebf8;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: black;
+  }
+  
+  .question-item {
+    background-color: #fff;
+    border: 1px solid rgb(218, 220, 224);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    page-break-inside: avoid;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+    padding: 24px;
+    
+
+  }
+  
+  .question-text {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .2px;
+    line-height: 24px;
+    color: #202124;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .answer-text {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .2px;
+    line-height: 20px;
+    color: rgb(32, 33, 36);
+
+    width: 100%;
+    height: 30px;
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+    outline: none;
+    resize: none;
+    overflow: hidden; /* Ascunde scrollbar-ul */
+
+  }
+  
+  
+  .answer-text:focus {
+    border-bottom: 2px solid #007bff; /* Albastru la focus */
+  }
