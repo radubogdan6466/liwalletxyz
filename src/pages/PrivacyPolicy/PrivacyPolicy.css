@@ -1,9 +1,5 @@
 .privacy-policy {
-  background-color: rgb(
-    29,
-    35,
-    41
-  ); /* Dark background for the entire Home section */
+  background-color: var(--primary-bg-color);
   padding: 20px;
   margin: 0 auto; /* Center the content horizontally */
   max-width: 700px; /* Limit content width for better layout on larger screens */

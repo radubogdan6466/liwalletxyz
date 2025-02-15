@@ -1,22 +1,18 @@
 .home {
-  background-color: rgb(
-    29,
-    35,
-    41
-  ); /* Dark background for the entire Home section */
+  background-color: var(--primary-bg-color);
   padding: 20px;
   text-align: center;
   color: #f2f2f2;
 }
 
 .home h1 {
-  font-size: 2em; /* Increase heading size */
+  font-size: 2em;
   margin-bottom: 20px;
 }
 
 .home p {
-  font-size: 1.1em; /* Slightly larger paragraph text */
-  line-height: 1.5; /* Improve readability */
+  font-size: 1.1em;
+  line-height: 1.5;
   margin-bottom: 20px;
 }
 
@@ -24,32 +20,65 @@
   color: #f2f2f2;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px; /* Rounded corners for buttons */
-  cursor: pointer; /* Indicate clickable button */
-  text-decoration: none; /* Remove underline from button text */
-  display: inline-block; /* Allow buttons to be placed side-by-side */
-  margin-top: 10px; /* Add spacing above buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  box-sizing: border-box;
+  position: relative; /* Permite transformarea elementului doar pe buton */
+  will-change: transform; /* Optimizare pentru performanță */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Optional: Styling for a hero image (replace with your image path) */
-.home img {
-  height: auto;
+.home a:hover {
+  transform: translateY(-5px); /* Mărește butonul prin mutarea acestuia în sus */
+  background-color: #3b4e6b;
 }
-.logo-small {
-  width: 150px;
-}
-.announce {
-  font-size: 15px;
-  color: #a9a9a9;
-}
-.download-link {
+
+.home .download-link {
   font-size: 20px;
   margin-right: 50px;
   display: inline-block;
   position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
-.download-link:hover {
-  font-size: 25px;
-  transition: 0.5s;
-  padding-right: 50px;
+
+.home .download-link.downloading {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  color: #fff;
+}
+
+
+.announce {
+  font-size: 15px;
+  color: #a9a9a9;
+}
+
+.home-header .logo-small {
+  animation: slideInR 1s ease-out forwards;
+}
+
+.liw {
+  animation: slideInL 1s ease-out forwards;
+}
+
+/* Animație logo */
+@keyframes slideInR {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInL {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

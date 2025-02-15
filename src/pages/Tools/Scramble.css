@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #212427;
+  background-color: var(--primary-bg-color);
 }
 .MainContent {
   display: flex;

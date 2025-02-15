@@ -1,9 +1,5 @@
 .about {
-  background-color: rgb(
-    29,
-    35,
-    41
-  ); /* Dark background for the entire Home section */
+  background-color: var(--primary-bg-color);
   padding: 20px;
   text-align: center;
   color: #f2f2f2;
