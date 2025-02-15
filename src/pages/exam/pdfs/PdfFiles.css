@@ -1,0 +1,36 @@
+/* PdfFiles.css */
+
+.pdf-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: sans-serif;
+    background-color: var(--primary-bg-color);
+  }
+  
+  .pdf-container h2 {
+    margin-bottom: 20px;
+    color: #f2f2f2;
+    text-align: center;
+  }
+  
+  .pdf-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: auto; /* sau max-width: 600px; */
+  }
+  
+  .pdf-container li {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .pdf-container a {
+    text-decoration: none;
+    color: #f2f2f2;
+    font-size: larger;
+    font-weight: 500;
+  }
