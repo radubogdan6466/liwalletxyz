@@ -9,8 +9,8 @@ import NoMatch from "./pages/NoMatch/NoMatch";
 import BalanceChecker from "./pages/Tools/BalanceChecker";
 import "./App.css";
 import Scramble from "./pages/Tools/Scramble";
-import Exam from "./pages/exam/Exam";
-import PdfPage from "./pages/exam/pdfs/PdfFiles.js";
+// import Exam from "./pages/exam/Exam";
+// import PdfPage from "./pages/exam/pdfs/PdfFiles.js";
 
 function App() {
   return (
@@ -22,15 +22,13 @@ function App() {
           <Route path="/tools" element={<MainTools />} />
           <Route path="/tools/BalanceChecker" element={<BalanceChecker />} />
           <Route path="/tools/scramble" element={<Scramble />} />
-          <Route path="/Exam" element={<Exam/>}/>
-          <Route path="/pdfs" element={<PdfPage/>}/>
+          {/* <Route path="/Exam" element={<Exam/>}/>
+          <Route path="/pdfs" element={<PdfPage/>}/> */}
 
           <Route path="/about" element={<About />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
-
-
       </div>
     </Router>
   );
